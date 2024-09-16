@@ -1,0 +1,35 @@
+database:
+    url: "mongodb://localhost:27017/vyavharbook?authSource=admin&w=1"
+server:
+    port: 5501
+auth:
+    jwksUri: "http://localhost:5501/.well-known/jwks.json"
+    REFRESH_TOKEN_SECRET : "SECRETKEYGOESHERE"
+    PRIVATE_KEY : "-----BEGIN RSA PRIVATE KEY-----
+                        MIIEowIBAAKCAQEAzcEMACtsY9pR+YiRrm+hlBr6P1s0BIWSvd3/Ft/BzmfvCHM2
+                        cHf5cj11MVHLWq2jKyG8ueqAQ54mKLEPWeQwTl5uDQf2Iri8vwvEJ5NQ1fIT20B4
+                        sm8BinXyN1w4m9eiMZnGsztx+pNtYgdbC9ZkQ8U5YMafpCq8081a28/4nmFaoPvo
+                        y2BK+aXM06wxwyaUvGf1ToiidpVWJrBgqHSmn9CqcBVOx5cECLPDQGnFZalrlQk3
+                        20aLYmzgsG2TTzjuK6HKPgdVm4f260Mvj368H2xxnjN1X+aOR+6jE8sA3zN00HUA
+                        VZptb/LBTX98Jf64Xcs+RkOdBOxcLRYQ0udrswIDAQABAoIBAFSdt5m6QfEur9e3
+                        WnIqZoDKN3AmydWyOQ7sZSO7EbEY/Sy0dQb70BIzRCbsRH0eO6RZU4wB7I3iVD8X
+                        0gBd35/bJdcmFwtgff7zj8/Wvb++tnvMn9aB4FhY+SvbOUyd+Y38d8LuB4nNZ4aR
+                        D9hmawWT7mzmQnD5Qn64TU1o0g4Prp+YWKd+OJfpNdz2gCxWqPK7eTXv+uXNjn1q
+                        Go/p8Py6bsswUuMW0CXA3nTZDGgZvE2p0KduMFjMhhxRg2XvJDOrGGbxtnZlu6GG
+                        GnsExRWD9+UBS0/xfvPJ+3C4KtivzD9X9tVzfIRhkDm2enfzZ8CkuiY4ZVtKqi7q
+                        1A4KfMECgYEA7PzATP7A6UQ2SFh4r5xZvnwddB/LllY441Xc9MWrLmp43zFKdY0H
+                        A7JvzpygK92TOels6o+QyP3E0eEJrPOQSI+K3Je7r+UBoPkoiR//dcfr3H3kDbFB
+                        D0UKXg5/EahsdJ5mjQo1XzPIaQAlnBuk1tAQvJz2nhQ3gN6eAoh2DJcCgYEA3kLT
+                        zt0yy6b7IGx+iOMuz1K2v6FkNfC2hzpdt8cVwHwN5rL8GzqfUedQmv80WXa0DZUP
+                        cClzbMP5TFn+dcAqVhnHVNILPCqEVz6bQgvPNklvSDfa1okQMTn5LGARFi/p1PeV
+                        HdVw5BBDYHpFjAOIT9kkGhAptDXHRP1EbrXAEUUCgYBP+hhXo52s20VKcvj/os8y
+                        lqZF+zj0mlKGfgKcZF0Zw/rYr8TGGPrmB4DuBDOVuigmYh1Mp3igK+wRPFXMlUH7
+                        Ct49BcPkX2+GSK+iXzcSI474kU+2QzyGj7Eo/tFpPyKi1JYdQPW0FECtFsyae0XM
+                        7NjJHluoC4CTsA05I55bLwKBgHYqe2fA7I+foGYVqJRojGuHY0ewq5GN/80Xd9oM
+                        S4FBszZTNHvZh/jIjW9KfW+PD50lAcc1EnviGTnBourBlwCdxf9PiM+dHy0vSOYt
+                        VyZaloKDx6JFzskNNG+mR49PO/eRBcONxe5KwzeY6j7NZfxlyq7cpv97lA0WxfpC
+                        QPItAoGBAMdBbFoAg7PNvAp9fojAli0TF8Id8tK5BsvGTUxq7s+BwiHADOmX6426
+                        3QlwHOFvIm9o96roELJc3wvGA2f8rr8oI5wl+5cMTn7w4vkZslxKaW4Y5huic9X/
+                        RoUoVkGY9wsgX+4xZSZ5bNjEzT7//fmRsc+A3y77b7cu5B0VdYIQ
+                        -----END RSA PRIVATE KEY-----"
+
