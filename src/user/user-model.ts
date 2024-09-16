@@ -5,32 +5,32 @@ const userSchema = new mongoose.Schema(
     {
         username: {
             type: String,
-            required: [true, "Username is required"], // Required with custom error message
-            unique: true, // Username must be unique
-            trim: true, // Remove extra spaces
-            minlength: [3, "Username must be at least 3 characters long"], // Minimum length validation
-            maxlength: [30, "Username cannot exceed 30 characters"] // Maximum length validation
+            required: [true, "Username is required"], 
+            unique: true,
+            trim: true, 
+            minlength: [3, "Username must be at least 3 characters long"],
+            maxlength: [30, "Username cannot exceed 30 characters"] 
         },
         firstName: {
             type: String,
             required: [true, "First name is required"],
             trim: true,
-            minlength: [3, "FirstName must be at least 3 characters long"], // Minimum length validation
-            maxlength: [30, "FirstName cannot exceed 30 characters"] // Maximum length validation
+            minlength: [3, "FirstName must be at least 3 characters long"],
+            maxlength: [30, "FirstName cannot exceed 30 characters"] 
         },
         middleName: {
             type: String,
             required: [true, "middle name is required"],
             trim: true,
-            minlength: [3, "MiddleName must be at least 3 characters long"], // Minimum length validation
-            maxlength: [30, "MiddleName cannot exceed 30 characters"] // Maximum length validation
+            minlength: [3, "MiddleName must be at least 3 characters long"],
+            maxlength: [30, "MiddleName cannot exceed 30 characters"] 
         },
         lastName: {
             type: String,
             required: [true, "Last name is required"],
             trim: true,
-            minlength: [3, "LastName must be at least 3 characters long"], // Minimum length validation
-            maxlength: [30, "LastName cannot exceed 30 characters"] // Maximum length validation
+            minlength: [3, "LastName must be at least 3 characters long"], 
+            maxlength: [30, "LastName cannot exceed 30 characters"] 
         },
         email: {
             type: String,
@@ -42,7 +42,8 @@ const userSchema = new mongoose.Schema(
         password: {
             type: String,
             required: [true, "Password is required"],
-            minlength: [6, "Password must be at least 6 characters long"] // Password must have a minimum length
+            minlength: [6, "Password must be at least 6 characters long"],
+            select : false
         },
         profilePic: {
             type: String, // URL of the user's profile picture (optional)
@@ -51,8 +52,8 @@ const userSchema = new mongoose.Schema(
         mobileNumber: {
             type: String,
             required: [true, "Mobile number is required"],
-            unique: true, // Mobile number must be unique
-            match: [/^\d{10}$/, "Please enter a valid 10-digit mobile number"] // Regex validation for mobile number
+            unique: true,
+            match: [/^\d{10}$/, "Please enter a valid 10-digit mobile number"] 
         },
         dateOfBirth: {
             type: Date,
