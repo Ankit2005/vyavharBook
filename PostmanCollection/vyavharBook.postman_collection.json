@@ -1,0 +1,343 @@
+{
+	"info": {
+		"_postman_id": "9d847300-eec5-4667-bf01-cff85c954fe5",
+		"name": "vyavharBook",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10050368"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"ankit2005\",\n    \"firstName\": \"Ankit\",\n    \"middleName\": \"Maheshbahi\",\n    \"lastName\": \"Bharvad\",\n    \"email\": \"ankitmb15@gmail.com\",\n    \"password\": \"ankit2005\",\n    \"profilePic\": \"\",\n    \"mobileNumber\": \"9537642005\",\n    \"dateOfBirth\": \"1998-05-19\",\n    \"address\": \"kadi\",\n    \"role\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vyavharBook_Url}}/user",
+							"host": [
+								"{{vyavharBook_Url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "Create Event",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"eventName\": \"shrimant\",\n    \"eventDate\": \"2024-10-20\", // ISO 8601 format for date\n    \"organizer\": \"66e5ab474b2324bf37dd5796\" ,// Specific user ID\n    \"attendees\": [],\n    \"groups\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vyavharBook_Url}}/event",
+							"host": [
+								"{{vyavharBook_Url}}"
+							],
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Attendees",
+			"item": [
+				{
+					"name": "Add Attendee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"nriav\",\n    \"middleName\": \"mumabhai\",\n    \"lastName\": \"bharvad\",\n    \"villageOrCity\": \"kadi\",\n    \"depositedAmount\": 2000,\n    \"addedAmount\": 1000,\n    \"gift\": \"silver ring\",\n    \"mobileNumber\": \"9924164177\",\n    \"event\": \"66e5e570a1cf0f205eef3b0b\", // shrimant event id\n    \"group\" : \"66e6d28f7a0c8b7aef35794c\" /// Cousin brother and sister group id\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vyavharBook_Url}}/attendee",
+							"host": [
+								"{{vyavharBook_Url}}"
+							],
+							"path": [
+								"attendee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Attendees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{vyavharBook_Url}}/attendee",
+							"host": [
+								"{{vyavharBook_Url}}"
+							],
+							"path": [
+								"attendee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find By Event Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{vyavharBook_Url}}/attendee/Schema.Types.ObjectId",
+							"host": [
+								"{{vyavharBook_Url}}"
+							],
+							"path": [
+								"attendee",
+								"Schema.Types.ObjectId"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Groups",
+			"item": [
+				{
+					"name": "Get All Groups",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vyavharBook_Url}}/group",
+							"host": [
+								"{{vyavharBook_Url}}"
+							],
+							"path": [
+								"group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Group By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vyavharBook_Url}}/group",
+							"host": [
+								"{{vyavharBook_Url}}"
+							],
+							"path": [
+								"group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Group",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"groupName\": \"demo\",\n  \"event\": \"66e5c838b4afda1a23389671\" \n//   \"members\": [\n//     \"66e6ba6f1927c9e370d953e0\", \n//     \"66e6c162932240823eb50d37\"\n//   ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vyavharBook_Url}}/group",
+							"host": [
+								"{{vyavharBook_Url}}"
+							],
+							"path": [
+								"group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Group",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"groupName\": \"Cousin brother and sister\",\n    \"event\": \"66e5c838b4afda1a23389671\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vyavharBook_Url}}/group/66e6e00c951690983f487c9d",
+							"host": [
+								"{{vyavharBook_Url}}"
+							],
+							"path": [
+								"group",
+								"66e6e00c951690983f487c9d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\" : \"ankitmb15@gmail.com\",\n    \"password\" : \"ankit2005\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{vyavharBook_Url}}/auth/login",
+					"host": [
+						"{{vyavharBook_Url}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "refresh",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\" : \"ankitmb15@gmail.com\",\n    \"password\" : \"ankit2005\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{vyavharBook_Url}}/auth/refresh",
+					"host": [
+						"{{vyavharBook_Url}}"
+					],
+					"path": [
+						"auth",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		},
+		{
+			"key": "vyavharBook_Url",
+			"value": "http://localhost:5500"
+		}
+	]
+}
