@@ -10,70 +10,77 @@ import { JwtPayload } from "jsonwebtoken";
 const tokenService = new TokenService(); // Instantiate the TokenService
 
 export class AuthController {
-    constructor (private logger: Logger) {}
+    constructor(private logger: Logger) {}
 
-    login = async (
-        req: Request,
-        res: Response,
-        next: NextFunction,
-    ) => {
+    login = async (req: Request, res: Response, next: NextFunction) => {
         const { username, password } = req.body;
-        
-    
+
+        console.log("login --------------------------------");
+        console.log(username, password);
+        console.log(req.body);
+
         try {
             // Validate input
             if (!username || !password) {
-                throw createHttpError(400, "Username and password are required");
+                throw createHttpError(
+                    400,
+                    "Username and password are required",
+                );
             }
-    
-            // Find the user by username
-            const user: any = await User.findOne({ email : username }).exec();
-    
+
+            // Find the user by username (email) and explicitly select the password field
+            const user: any = await User.findOne({ email: username })
+                .select("+password")
+                .exec();
+
             if (!user) {
-    
                 throw createHttpError(401, "Invalid username or password");
             }
-    
+
             // Check if password matches
-    
-            const isPasswordValid = await bcrypt.compare(password, user.password);
-    
+
+            const isPasswordValid = await bcrypt.compare(
+                password,
+                user.password,
+            );
+
             if (!isPasswordValid) {
                 throw createHttpError(401, "Invalid username or password");
             }
-    
+
             // Generate tokens
             const accessToken = tokenService.generateAccessToken({
                 id: user._id.toString(),
                 role: user.role,
             });
             // Persist the refresh token
-         const newRefreshToken :any  =  await tokenService.persistRefreshToken(user);
-    
+            const newRefreshToken: any =
+                await tokenService.persistRefreshToken(user);
+
             const refreshToken = tokenService.generateRefreshToken({
-                refreshTokenId : newRefreshToken._id,
-                id : user._id.toString(),
+                refreshTokenId: newRefreshToken._id,
+                id: user._id.toString(),
                 role: user.role,
             });
-    
+
             res.cookie("accessToken", accessToken, {
                 domain: "localhost",
                 sameSite: "strict",
                 maxAge: 1000 * 60 * 60, // expire in 1h
                 httpOnly: true, // very important flag
             });
-    
+
             res.cookie("refreshToken", refreshToken, {
                 domain: "localhost",
                 sameSite: "strict",
                 maxAge: 1000 * 60 * 60 * 24 * 365, // expire in 1-year
                 httpOnly: true, // very important flag
             });
-    
+
             this.logger.info("user has been logged in", { id: user._id });
-    
+
             res.json({ id: user._id });
-    
+
             // Send response
             res.json({ id: user._id });
         } catch (error) {
@@ -81,7 +88,7 @@ export class AuthController {
         }
     };
 
-     refresh = async(req: Request, res: Response, next: NextFunction) => {
+    refresh = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const payload: JwtPayload = {
                 id: req.body.id,
@@ -92,7 +99,7 @@ export class AuthController {
             const accessToken = tokenService.generateAccessToken(payload);
             this.logger.info("create new accessToken");
 
-            const user = await User.findById(Number( {_id : req.body.id}));
+            const user = await User.findById(Number({ _id: req.body.id }));
 
             if (!user) {
                 const error = createHttpError(
@@ -104,7 +111,7 @@ export class AuthController {
             }
 
             // Persist the refresh token
-            const newRefreshToken : any =
+            const newRefreshToken: any =
                 await tokenService.persistRefreshToken(user);
             this.logger.info("create new refreshToken");
 
@@ -114,7 +121,7 @@ export class AuthController {
 
             const refreshToken = tokenService.generateRefreshToken({
                 ...payload,
-                refreshTokenId : String(newRefreshToken._id),
+                refreshTokenId: String(newRefreshToken._id),
             });
 
             res.cookie("accessToken", accessToken, {
@@ -139,6 +146,5 @@ export class AuthController {
             next(error);
             return;
         }
-    }
-
+    };
 }
